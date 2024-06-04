@@ -16,47 +16,64 @@ let computerScore = 0;
 function playRound(humanChoice, computerChoice) {
   let result = 'oops';
   if (humanChoice === computerChoice) {
-    result = 'Its a tie!'
+    result = 'Ничья!'
   }
 
   if (humanChoice === 'rock') {
     if (computerChoice === 'paper') {
-      result = `You lose! Paper beats Rock!`
+      result = `Ты проиграл! Бумага бьет Камень!`
       computerScore += 1;
     } else
     if (computerChoice === 'scissors') {
-      result = 'You won! Rock beats Scissors!'
+      result = 'Ты выиграл! Камень бьет Ножницы!'
       humanScore += 1;
     }
   } else 
   if (humanChoice === 'paper') {
     if (computerChoice === 'rock') {
-      result = 'You won! Paper beats Rock!'
+      result = 'Ты выиграл! Бумага бьет Камень!'
       humanScore += 1;
     } else
     if (computerChoice === 'scissors') {
-      result = `You lose! Scissors beats Paper!`
+      result = 'Ты проиграл! Ножницы бьют Бумагу!'
       computerScore += 1;
     }
   } else
   if (humanChoice === 'scissors') {
     if (computerChoice === 'rock') {
-      result = `You lose! Rock beats Scissors!`
+      result = `Ты проиграл! Камень бьет Ножницы!`
       computerScore += 1;
     } else
     if (computerChoice === 'paper') {
-      result = `You win! Scissors beats Paper!`
+      result = `Ты выиграл! Ножницы бьют Бумагу!`
       humanScore += 1;
     }
   }
   return result;
 }
 
-function playGame(){
-  for(let i = 0; i < 5; i++) {
-    console.log(playRound(getHumanChoice(), getComputerChoice()))
-  }
-  console.log(`computer: ${computerScore} | human: ${humanScore}`)
-}
+const resultDiv = document.querySelector('#result');
+const buttonsList = document.querySelector('#buttonsList');
+const winnerH2 = document.querySelector('#winner');
+const scoreDiv = document.querySelector('#score');
 
-playGame();
+const rockButton = document.querySelector('#rock');
+const paperButton = document.querySelector('#paper');
+const scissorsButton = document.querySelector('#scissors');
+
+buttonsList.addEventListener('click', (e) => {
+  let result = playRound(e.target.id, getComputerChoice())
+  resultDiv.textContent = result;
+  scoreDiv.textContent = `Ты: ${humanScore} | Компьютер: ${computerScore}`
+  if (humanScore >= 5) {
+    resultDiv.textContent = 'ТЫ ПОБЕДИЛ!!!🥳🥳🥳'
+    humanScore = 0
+    computerScore = 0
+  }
+  if (computerScore >= 5) {
+    resultDiv.textContent = 'ТЫ ПРОИГРАЛ!!!😭😭😭'
+    humanScore = 0
+    computerScore = 0
+  }
+})
+
