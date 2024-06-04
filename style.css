@@ -61,6 +61,41 @@ button {
   font-family: "Press Start 2P", system-ui;
 }
 
+#computerContainer {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+#text {
+  font-size: 12px;
+}
+
+#computer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 128px;
+  width: 200px;
+  height: 200px;
+  margin: 12px 28px 4px 28px ;
+  background-color: #455351;
+  border: 4px dashed #c7c5ae;
+  border-radius: 20px;
+}
+
 #textContainer {
+  flex: 2;
+  margin: 12px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
+}
+
+#buttonsList {
+  flex: 3;
 }

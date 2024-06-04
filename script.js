@@ -55,6 +55,7 @@ function playRound(humanChoice, computerChoice) {
 const resultDiv = document.querySelector('#result');
 const buttonsList = document.querySelector('#buttonsList');
 const scoreDiv = document.querySelector('#score');
+const iconComputer = document.querySelector('#computer');
 
 const rockButton = document.querySelector('#rock');
 const paperButton = document.querySelector('#paper');
@@ -62,18 +63,37 @@ const scissorsButton = document.querySelector('#scissors');
 
 buttonsList.addEventListener('click', (e) => {
   let computer = getComputerChoice()
+  console.log(computer)
   let result = playRound(e.target.id, computer)
+  let computerIcon = '🖥️'
+  switch(computer){
+    case 'rock':
+      computerIcon = '✊'
+      break
+    case 'paper':
+      computerIcon = '✋'
+      break
+    case 'scissors':
+      computerIcon = '✌️'
+      break
+  }
+  iconComputer.textContent = computerIcon
   resultDiv.textContent = result;
   scoreDiv.textContent = `Ты: ${humanScore} | Компьютер: ${computerScore}`
-  if (humanScore >= 5) {
-    resultDiv.textContent = 'ТЫ ПОБЕДИЛ!!!🥳🥳🥳'
+
+  function clearGameInfo(){
     humanScore = 0
     computerScore = 0
+    iconComputer.textContent = '🖥️'
+    scoreDiv.textContent = `Возьми печеньку!`
+  }
+  if (humanScore >= 5) {
+    resultDiv.textContent = 'ТЫ ПОБЕДИЛ!!!🥳🥳🥳'
+    clearGameInfo()
   }
   if (computerScore >= 5) {
     resultDiv.textContent = 'ТЫ ПРОИГРАЛ!!!😭😭😭'
-    humanScore = 0
-    computerScore = 0
+    clearGameInfo()
   }
 })
 
