@@ -1,5 +1,5 @@
 function getComputerChoice() {
-  let rand = (Math.random() * 10).toFixed(2);
+  let rand = (Math.random() * 100) / 10;
   if(rand<3.33){return 'rock'};
   if(rand<6.66){return 'paper'};
   if(rand<10){return 'scissors'};
@@ -54,7 +54,6 @@ function playRound(humanChoice, computerChoice) {
 
 const resultDiv = document.querySelector('#result');
 const buttonsList = document.querySelector('#buttonsList');
-const winnerH2 = document.querySelector('#winner');
 const scoreDiv = document.querySelector('#score');
 
 const rockButton = document.querySelector('#rock');
@@ -62,7 +61,8 @@ const paperButton = document.querySelector('#paper');
 const scissorsButton = document.querySelector('#scissors');
 
 buttonsList.addEventListener('click', (e) => {
-  let result = playRound(e.target.id, getComputerChoice())
+  let computer = getComputerChoice()
+  let result = playRound(e.target.id, computer)
   resultDiv.textContent = result;
   scoreDiv.textContent = `Ты: ${humanScore} | Компьютер: ${computerScore}`
   if (humanScore >= 5) {
