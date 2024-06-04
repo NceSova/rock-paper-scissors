@@ -7,6 +7,10 @@
 }
 
 body {
+  text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -79,8 +83,8 @@ button {
   justify-content: center;
   align-items: center;
   font-size: 128px;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   margin: 12px 28px 4px 28px ;
   background-color: #455351;
   border: 4px dashed #c7c5ae;
